@@ -14,7 +14,7 @@ public class App extends MvvmfxCdiApplication {
 	}
 
 	public void startMvvmfx(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Hello World Application");
+		primaryStage.setTitle("Project-Simulator");
 
 		ViewTuple<MainView, MainViewModel> viewTuple = FluentViewLoader.fxmlView(MainView.class).load();
 

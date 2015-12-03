@@ -2,14 +2,13 @@ package de.hszg.ProjectSimulator;
 
 import de.saxsys.mvvmfx.FxmlView;
 import de.saxsys.mvvmfx.InjectViewModel;
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**
@@ -41,6 +40,10 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     public Slider SliderGehalt;
     @FXML
     public Button buttonNachsteRunde;
+    @FXML
+    public Label labelNeuesGehalt;
+    @FXML
+    public ToggleGroup ToggleGroupSelect;
 
     @InjectViewModel
     private MainViewModel viewModel;
@@ -56,9 +59,26 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         labelGesundheit.textProperty().bindBidirectional(viewModel.gesundheitText());
         labelMotivation.textProperty().bindBidirectional(viewModel.motivationText());
         SliderGehalt.valueProperty().bindBidirectional(viewModel.gehaltProperty());
+        SliderGehalt.setMax(3000);
+        SliderGehalt.setMin(1000);
+        SliderGehalt.setMajorTickUnit(1);
+        SliderGehalt.setMinorTickCount(0);
+        SliderGehalt.setValue(1500.00);
 
-        buttonStart.setOnAction(event -> viewModel.startRound());
-        buttonNachsteRunde.setOnAction(event -> viewModel.nextRound());
+        labelNeuesGehalt.textProperty().bind(SliderGehalt.valueProperty().asString());
+
+        buttonStart.setOnAction(event -> {
+            buttonNachsteRunde.setDisable(false);
+            buttonStart.setDisable(true);
+            txtFieldGeldEingabe.setDisable(true);
+            txtFieldZeitEingabe.setDisable(true);
+            viewModel.startRound();
+        });
+
+        buttonNachsteRunde.setOnAction(event -> {
+            RadioButton rb = (RadioButton) ToggleGroupSelect.getSelectedToggle();
+            viewModel.nextRound(rb.getText());
+        });
     }
 
 

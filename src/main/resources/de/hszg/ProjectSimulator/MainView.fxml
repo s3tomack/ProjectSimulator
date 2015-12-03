@@ -210,14 +210,14 @@
          </children>
       </VBox>
       <VBox layoutX="298.0" layoutY="240.0" prefHeight="229.0" prefWidth="305.0">
+         <fx:define>
+            <ToggleGroup fx:id="ToggleGroupSelect" />
+         </fx:define>
          <children>
-            <RadioButton fx:id="RadioButtonEntwickeln" mnemonicParsing="false" prefHeight="24.0" prefWidth="130.0" text="Entwickeln">
+            <RadioButton fx:id="RadioButtonEntwickeln" selected="true" mnemonicParsing="false" prefHeight="24.0" prefWidth="130.0" text="Entwickeln" toggleGroup="$ToggleGroupSelect">
                <VBox.margin>
                   <Insets left="15.0" top="20.0" />
                </VBox.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="ToggleGroupSelect" />
-               </toggleGroup>
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -250,7 +250,7 @@
                   </RadioButton>
                   <VBox prefHeight="50.0" prefWidth="190.0">
                      <children>
-                        <Label fx:id="labelNeuesGehalt1" prefHeight="27.0" prefWidth="118.0">
+                        <Label fx:id="labelNeuesGehalt" prefHeight="27.0" prefWidth="118.0">
                            <padding>
                               <Insets bottom="10.0" left="5.0" />
                            </padding>
