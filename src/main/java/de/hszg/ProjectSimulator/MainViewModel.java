@@ -59,4 +59,10 @@ public class MainViewModel implements ViewModel{
     public Property<Number> gehaltProperty() {
         return gehaltWertProperty;
     }
+
+    public void startRound() {
+    }
+
+    public void nextRound() {
+    }
 }

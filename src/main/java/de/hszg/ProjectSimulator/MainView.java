@@ -22,7 +22,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     @FXML
     public TextField txtFieldGeldEingabe;
     @FXML
-    public Button ButtonStart;
+    public Button buttonStart;
     @FXML
     public Label labelQualitaet;
     @FXML
@@ -40,7 +40,7 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
     @FXML
     public Slider SliderGehalt;
     @FXML
-    public Button ButtonNachsteRunde;
+    public Button buttonNachsteRunde;
 
     @InjectViewModel
     private MainViewModel viewModel;
@@ -56,5 +56,10 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         labelGesundheit.textProperty().bindBidirectional(viewModel.gesundheitText());
         labelMotivation.textProperty().bindBidirectional(viewModel.motivationText());
         SliderGehalt.valueProperty().bindBidirectional(viewModel.gehaltProperty());
+
+        buttonStart.setOnAction(event -> viewModel.startRound());
+        buttonNachsteRunde.setOnAction(event -> viewModel.nextRound());
     }
+
+
 }
