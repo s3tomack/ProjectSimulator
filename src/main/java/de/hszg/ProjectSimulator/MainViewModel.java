@@ -10,13 +10,13 @@ public class MainViewModel implements ViewModel{
 
     private StringProperty geldEingabeProperty = new SimpleStringProperty();
     private StringProperty zeitEingabeProperty = new SimpleStringProperty();
-    private StringProperty qualitaetProperty = new SimpleStringProperty();
-    private StringProperty zeitProperty = new SimpleStringProperty();
-    private StringProperty skillProperty = new SimpleStringProperty();
-    private StringProperty gehaltProperty = new SimpleStringProperty();
-    private StringProperty geldProperty = new SimpleStringProperty();
-    private StringProperty gesundheitProperty = new SimpleStringProperty();
-    private StringProperty motivationProperty = new SimpleStringProperty();
+    private StringProperty qualitaetProperty = new SimpleStringProperty("0");
+    private StringProperty zeitProperty = new SimpleStringProperty("0");
+    private StringProperty skillProperty = new SimpleStringProperty("5");
+    private StringProperty gehaltProperty = new SimpleStringProperty("1500");
+    private StringProperty geldProperty = new SimpleStringProperty("0");
+    private StringProperty gesundheitProperty = new SimpleStringProperty("10");
+    private StringProperty motivationProperty = new SimpleStringProperty("5");
     private DoubleProperty gehaltWertProperty = new SimpleDoubleProperty();
 
 
@@ -63,6 +63,7 @@ public class MainViewModel implements ViewModel{
     public void startRound() {
     }
 
-    public void nextRound() {
+    public void nextRound(String text) {
+        System.out.println(text);
     }
 }
