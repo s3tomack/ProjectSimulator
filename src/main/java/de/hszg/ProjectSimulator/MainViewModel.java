@@ -19,6 +19,7 @@ public class MainViewModel implements ViewModel{
     private StringProperty motivationProperty = new SimpleStringProperty("5");
     private DoubleProperty gehaltWertProperty = new SimpleDoubleProperty();
 
+    private double magicValue = 0;
 
     public Property<String> geldEingabe() {
         return geldEingabeProperty;
@@ -61,9 +62,51 @@ public class MainViewModel implements ViewModel{
     }
 
     public void startRound() {
+        zeitProperty.setValue(zeitEinagabe().getValue());
+        geldProperty.setValue(geldEingabe().getValue());
+        magicValue = 12 / stringPropertyToDouble(zeitProperty);
     }
 
     public void nextRound(String text) {
-        System.out.println(text);
+        switch (text) {
+            case "Entwickeln": {
+                motivationProperty.setValue(doubleToString(stringPropertyToDouble(motivationProperty) * (0.05 + (stringPropertyToDouble(gesundheitProperty) / 10d))));
+                gesundheitProperty.setValue(doubleToString(stringPropertyToDouble(gesundheitProperty) * 0.95));
+                zeitProperty.setValue(doubleToString(stringPropertyToDouble(zeitProperty) - 1));
+                geldProperty.setValue(doubleToString(stringPropertyToDouble(geldProperty) - stringPropertyToDouble(gehaltProperty)));
+
+                qualitaetProperty.setValue(doubleToString(stringPropertyToDouble(qualitaetProperty) + (((stringPropertyToDouble(skillProperty) + stringPropertyToDouble(motivationProperty) + stringPropertyToDouble(gesundheitProperty)) * 4) / 100) * magicValue));
+                break;
+            }
+            case "Training": {
+                skillProperty.setValue(doubleToString(stringPropertyToDouble(skillProperty) + 1));
+                gesundheitProperty.setValue(doubleToString(stringPropertyToDouble(gesundheitProperty) * 0.95));
+                zeitProperty.setValue(doubleToString(stringPropertyToDouble(zeitProperty) - 1));
+                geldProperty.setValue(doubleToString(stringPropertyToDouble(geldProperty) - stringPropertyToDouble(gehaltProperty) - 500));
+
+                break;
+            }
+            case "Gehalt": {
+                motivationProperty.setValue(doubleToString(stringPropertyToDouble(motivationProperty) + 1));
+                geldProperty.setValue(doubleToString(stringPropertyToDouble(geldProperty) - stringPropertyToDouble(gehaltProperty)));
+
+                break;
+            }
+            case "Urlaub": {
+                geldProperty.setValue(doubleToString(stringPropertyToDouble(geldProperty) - stringPropertyToDouble(gehaltProperty) - 500));
+                motivationProperty.setValue(doubleToString(stringPropertyToDouble(motivationProperty) + 1));
+                gesundheitProperty.setValue(doubleToString(stringPropertyToDouble(gesundheitProperty) + 1));
+
+                break;
+            }
+        }
+    }
+
+    public double stringPropertyToDouble(StringProperty stringProperty) {
+        return new Double(stringProperty.get());
+    }
+
+    public String doubleToString(double value) {
+        return (new Double(value)).toString();
     }
 }
