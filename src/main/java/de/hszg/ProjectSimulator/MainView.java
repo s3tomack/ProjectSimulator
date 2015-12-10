@@ -59,13 +59,14 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         labelGesundheit.textProperty().bindBidirectional(viewModel.gesundheitText());
         labelMotivation.textProperty().bindBidirectional(viewModel.motivationText());
         SliderGehalt.valueProperty().bindBidirectional(viewModel.gehaltProperty());
-        SliderGehalt.setMax(3000);
-        SliderGehalt.setMin(1000);
-        SliderGehalt.setMajorTickUnit(1);
+        SliderGehalt.setValue(1500);
+        SliderGehalt.setShowTickMarks(true);
+        SliderGehalt.setMajorTickUnit(100);
         SliderGehalt.setMinorTickCount(0);
-        SliderGehalt.setValue(1500.00);
+        SliderGehalt.setBlockIncrement(100);
+        SliderGehalt.setSnapToTicks(true);
 
-        labelNeuesGehalt.textProperty().bind(SliderGehalt.valueProperty().asString());
+        labelNeuesGehalt.textProperty().bind(SliderGehalt.valueProperty().asString("%.0f"));
 
         buttonStart.setOnAction(event -> {
             buttonNachsteRunde.setDisable(false);

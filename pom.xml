@@ -44,14 +44,14 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      <!--<plugin>
+      <plugin>
         <groupId>com.zenjava</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
         <version>8.1.2</version>
         <configuration>
           <mainClass>de.hszg.ameisen.Application</mainClass>
         </configuration>
-      </plugin>-->
+      </plugin>
     </plugins>
   </build>
 </project>
