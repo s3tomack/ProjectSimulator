@@ -80,6 +80,11 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
             RadioButton rb = (RadioButton) ToggleGroupSelect.getSelectedToggle();
             viewModel.nextRound(rb.getText());
         });
+
+        viewModel.setButtonNaechsteRunde(buttonNachsteRunde);
+        viewModel.setButtonStart(buttonStart);
+        viewModel.setTxtFieldGeldEingabe(txtFieldGeldEingabe);
+        viewModel.setTxtFieldZeitEingabe(txtFieldZeitEingabe);
     }
 
 
