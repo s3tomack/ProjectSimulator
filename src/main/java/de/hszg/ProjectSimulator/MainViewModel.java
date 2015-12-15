@@ -123,9 +123,13 @@ public class MainViewModel implements ViewModel{
             case "Gehalt": {
                 geldProperty.setValue(doubleToString(stringPropertyToDouble(geldProperty) - stringPropertyToDouble(gehaltProperty)));
 
+
+                double vorher = stringPropertyToDouble(gehaltProperty);
                 gehaltProperty.setValue(gehaltWertProperty.getValue().toString());
 
-                if (stringPropertyToDouble(motivationProperty) <= 9) {
+                if (stringPropertyToDouble(gehaltProperty) - vorher <= 0) {
+                    motivationProperty.setValue(doubleToString(stringPropertyToDouble(motivationProperty) - 1));
+                } else if (stringPropertyToDouble(motivationProperty) <= 9) {
                     motivationProperty.setValue(doubleToString(stringPropertyToDouble(motivationProperty) + 1));
                 } else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
