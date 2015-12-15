@@ -101,7 +101,7 @@ public class MainViewModel implements ViewModel{
 
         zeitProperty.setValue(zeitEinagabe().getValue());
         geldProperty.setValue(geldEingabe().getValue());
-        magicValue = stringPropertyToDouble(zeitProperty) / 4;
+        magicValue = (stringPropertyToDouble(zeitProperty) * 1.5) / stringPropertyToDouble(zeitProperty);
     }
 
     public void nextRound(String text) {
