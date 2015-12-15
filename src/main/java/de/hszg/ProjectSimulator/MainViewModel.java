@@ -180,6 +180,18 @@ public class MainViewModel implements ViewModel{
             resetUI();
         }
 
+        if (stringPropertyToDouble(geldProperty) < 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(";(");
+            alert.setHeaderText("Verloren");
+            alert.setContentText("Leider ist das Geld alle, jetzt gehört die Firma mir!");
+
+            alert.showAndWait();
+
+            resetUI();
+            return;
+        }
+
         if (stringPropertyToDouble(qualitaetProperty) >= 10) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle(":)");
