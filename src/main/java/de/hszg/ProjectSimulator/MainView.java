@@ -60,8 +60,8 @@ public class MainView implements FxmlView<MainViewModel>, Initializable {
         labelMotivation.textProperty().bindBidirectional(viewModel.motivationText());
         SliderGehalt.valueProperty().bindBidirectional(viewModel.gehaltProperty());
         SliderGehalt.setValue(1500);
-        SliderGehalt.setShowTickMarks(true);
-        SliderGehalt.setMajorTickUnit(100);
+        SliderGehalt.setShowTickMarks(false);
+        SliderGehalt.setMajorTickUnit(1);
         SliderGehalt.setMinorTickCount(0);
         SliderGehalt.setBlockIncrement(100);
         SliderGehalt.setSnapToTicks(true);
