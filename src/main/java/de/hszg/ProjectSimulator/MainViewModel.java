@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
  */
 public class MainViewModel implements ViewModel{
 
-    private StringProperty geldEingabeProperty = new SimpleStringProperty();
-    private StringProperty zeitEingabeProperty = new SimpleStringProperty();
+    private StringProperty geldEingabeProperty = new SimpleStringProperty("");
+    private StringProperty zeitEingabeProperty = new SimpleStringProperty("");
     private StringProperty qualitaetProperty = new SimpleStringProperty("0");
     private StringProperty zeitProperty = new SimpleStringProperty("0");
     private StringProperty skillProperty = new SimpleStringProperty("5");
@@ -87,6 +87,18 @@ public class MainViewModel implements ViewModel{
     }
 
     public void startRound() {
+        if(zeitEinagabe().getValue().equals("") || geldEingabe().getValue().equals("")) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Fehler");
+            alert.setContentText("Du musst ein Startkapital und eine Entwicklungsdauer festlegen!");
+
+            alert.showAndWait();
+
+            resetUI();
+            return;
+        }
+
         zeitProperty.setValue(zeitEinagabe().getValue());
         geldProperty.setValue(geldEingabe().getValue());
         magicValue = stringPropertyToDouble(zeitProperty) / 4;
