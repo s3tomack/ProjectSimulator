@@ -16,11 +16,11 @@ public class MainViewModel implements ViewModel{
     private StringProperty zeitEingabeProperty = new SimpleStringProperty("");
     private StringProperty qualitaetProperty = new SimpleStringProperty("0");
     private StringProperty zeitProperty = new SimpleStringProperty("0");
-    private StringProperty skillProperty = new SimpleStringProperty("5");
+    private StringProperty skillProperty = new SimpleStringProperty("5.0");
     private StringProperty gehaltProperty = new SimpleStringProperty("1500.0");
     private StringProperty geldProperty = new SimpleStringProperty("0");
-    private StringProperty gesundheitProperty = new SimpleStringProperty("10");
-    private StringProperty motivationProperty = new SimpleStringProperty("5");
+    private StringProperty gesundheitProperty = new SimpleStringProperty("10.0");
+    private StringProperty motivationProperty = new SimpleStringProperty("5.0");
     private DoubleProperty gehaltWertProperty = new SimpleDoubleProperty();
 
     private Button buttonStart;
